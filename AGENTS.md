@@ -39,12 +39,22 @@ All commands are defined in the root `Makefile`:
 
 The Paper 2 modeling pipeline is at `modeling/run_pipeline.py`. Phase 0 will report `brian2` as missing (optional; Phase 2 has a graceful fallback). Phase 1 (ODE model) is the core demo that exercises `numpy`, `scipy`, and `pyyaml`.
 
-To run Phase 1 directly:
+To verify Phase 1 deps:
 ```bash
 python3 -c "import numpy, scipy, yaml; print('deps OK')"
 ```
 
-The full pipeline (`python3 modeling/run_pipeline.py`) requires a `main.tex` at the repo root, but the manuscript lives at `paper1/main.tex`. Phase 0 will fail because `MANUSCRIPT_PATH` resolves to `/workspace/main.tex`. This is expected for the public mirror; the pipeline is designed for the PHY600 repo layout.
+The full pipeline (`python3 modeling/run_pipeline.py`) halts at Phase 0 because `brian2` is absent and `MANUSCRIPT_PATH` resolves to `/workspace/main.tex` (manuscript lives at `paper1/main.tex`). This is expected for the public mirror.
+
+To run Phase 1 (ODE model) bypassing Phase 0's gate:
+```bash
+python3 -c "
+import sys; sys.path.insert(0, 'modeling')
+from run_pipeline import run_phase1, load_config
+results = run_phase1(load_config())
+print('Status:', results['status'])
+"
+```
 
 ### Pipeline analysis scripts
 
