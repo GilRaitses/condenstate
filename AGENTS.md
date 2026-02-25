@@ -62,7 +62,18 @@ Scripts in `pipeline/` (`analyze_sim.py`, `generate_canonical_figures.py`, `buil
 
 ### Secrets and SSH
 
-This repo contains no secrets. For cloud orchestration with PHY600/magniphyq, see `.meta/docs/CLOUD_AGENT_SETUP_GUIDE.md`. Those features are optional and require `MAGNIPHYQ_IP`, `SSH_KEY_PATH`, and `PHY600_ROOT` environment variables plus an SSH key on the VM.
+For cloud orchestration with PHY600/magniphyq, three Cursor secrets must be set (repo-scoped to condenstate). See `.meta/docs/CLOUD_AGENT_SETUP_GUIDE.md` for full details.
+
+- `MAGNIPHYQ_IP` — magniphyq EC2 public IP
+- `SSH_KEY_PATH` — path to PEM key on the VM (the value from `.env.example`)
+- `PAX_EC2_KEY_PEM` — full PEM file content of the SSH private key
+
+The VM startup script writes `PAX_EC2_KEY_PEM` to the path in `$SSH_KEY_PATH` with `chmod 600` automatically. To verify SSH connectivity:
+```bash
+ssh -i "$SSH_KEY_PATH" -o StrictHostKeyChecking=no -o ConnectTimeout=10 ubuntu@$MAGNIPHYQ_IP "echo ok"
+```
+
+Full setup guide: `.meta/docs/CLOUD_AGENT_SETUP_GUIDE.md`.
 
 ### Python version
 
