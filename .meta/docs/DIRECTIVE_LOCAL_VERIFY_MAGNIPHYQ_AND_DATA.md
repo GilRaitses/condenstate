@@ -67,7 +67,6 @@ at: [ISO UTC]
 Use `ready: yes` only when eval is pass, env and key are in place, magniphyq is reachable, condenstate exists on magniphyq, and data dir is present and ~4GB. Otherwise `ready: no` and set `gaps` accordingly.
 
 **Cursor env for the cloud agent:** The local agent cannot set the cloud agent’s environment. You must configure the **cloud** Cursor environment (Settings → environment/secrets for that cloud project): set `MAGNIPHYQ_IP` and `SSH_KEY_PATH`, and ensure the SSH private key file exists on the cloud VM at `SSH_KEY_PATH`. See `.meta/docs/SECRETS_FOR_CLOUD_AGENTS.md` and the “Cloud agent SSH failed” section there.
-
 ---
 
 ## Ensuring full data dir on magniphyq (~4GB)
