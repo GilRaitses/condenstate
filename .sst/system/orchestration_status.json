@@ -1,0 +1,10 @@
+{
+  "repo_commit": "165f2ce6800d1882a5091630eb51fe5526c16284",
+  "gates_eval_status": "pass",
+  "readiness_status": "pass",
+  "magniphyq_reachable": "yes",
+  "condenstate_on_magniphyq": "yes",
+  "data_dir_ok": "yes",
+  "cleared_blocks": ["eval", "local_readiness", "magniphyq_verify"],
+  "next_actions": ["parallel worker A", "parallel worker B"]
+}

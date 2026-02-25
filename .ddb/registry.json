@@ -1,6 +1,37 @@
 {
   "entries": [
     {
+      "artifact_hash": "58c8d57c2c733d0904a008454b7fb3b981c86b42f68665238d6d3853e88995e8",
+      "artifact_path": ".sst/memos/ORCHESTRATION_PLAN.md",
+      "decision_id": "25ae137b2d483c16085642939b82d3a0ef39f29e8b88aad309a95fc139dfb919",
+      "equivalence_policy": {
+        "canonicalization": "LF normalize, trim trailing whitespace per line, UTF-8",
+        "compare_fields": [
+          "__full_text__"
+        ],
+        "policy_name": "canonical_lf_trim_trailing_ws_sha256"
+      },
+      "identity_fields": {
+        "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "params_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+        "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526"
+      },
+      "kind": "ORCHESTRATION_PLAN",
+      "provenance": {
+        "generator": ".ddb/tools/register_sst.py",
+        "source_artifact": ".sst/memos/ORCHESTRATION_PLAN.md",
+        "source_type": "text"
+      },
+      "scope": {
+        "graph_id": "condenstate-canon-v1",
+        "lifecycle_id": "mirror-local-20260211-0001",
+        "od_pair": "project:condenstate",
+        "run_id": "condenstate-manifest-0001"
+      },
+      "status": "active"
+    },
+    {
       "artifact_hash": "81123374c5b4dd03dca0029932c949fb0a576d31fd7981a6ec9fc0fffc0e96c8",
       "artifact_path": ".sst/claims_matrix.json",
       "decision_id": "27cd21ed76f1988498af574370ec44c26426c0698f5a5d7580da1c6cdf9efe88",
@@ -442,6 +473,37 @@
       "supersedes": [
         "4923b63d101468c67928905eb0d6f23e830b07ec2fabc5021b8777abfa564630"
       ]
+    },
+    {
+      "artifact_hash": "53fcdb01e9eb2e2d7f0e2c7f0f8d32aa010e5e808a6fd72e02aae0543862be74",
+      "artifact_path": ".sst/system/orchestration_status.json",
+      "decision_id": "b2aa56ee4e63db8cfb5facc74c3070002afbc7899fe4a6c578ff09ac0895a9db",
+      "equivalence_policy": {
+        "canonicalization": "JSON sort keys, compact separators, UTF-8",
+        "compare_fields": [
+          "__full_json__"
+        ],
+        "policy_name": "canonical_json_sha256"
+      },
+      "identity_fields": {
+        "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "params_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+        "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526"
+      },
+      "kind": "orchestration_status",
+      "provenance": {
+        "generator": ".ddb/tools/register_sst.py",
+        "source_artifact": ".sst/system/orchestration_status.json",
+        "source_type": "json"
+      },
+      "scope": {
+        "graph_id": "condenstate-canon-v1",
+        "lifecycle_id": "mirror-local-20260211-0001",
+        "od_pair": "project:condenstate",
+        "run_id": "condenstate-manifest-0001"
+      },
+      "status": "active"
     },
     {
       "artifact_hash": "d513f78f12b873ef2f968aa40d4e9655141f82fb613d01bc5b25d6e6ab751675",
