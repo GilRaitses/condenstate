@@ -1,0 +1,154 @@
+# Material Eligibility Modeling Pipeline Configuration
+# All parameters needed for autonomous execution
+
+project:
+  name: "Material Eligibility in Synaptic Learning"
+  version: "1.0.0"
+  manuscript: "../main.tex"
+  figures_dir: "../figures"
+
+# Phase 0: Environment
+environment:
+  python_version: "3.10"
+  packages:
+    - brian2>=2.5
+    - numpy>=1.24
+    - scipy>=1.10
+    - matplotlib>=3.7
+    - pytest>=7.0
+
+# Phase 1: ODE Model Parameters
+ode_model:
+  # Biochemical eligibility (fast)
+  tau_E_values: [0.5, 1.0, 2.0, 5.0]  # seconds
+  tau_E_default: 1.0
+  
+  # Material eligibility (slow)
+  tau_eta_values: [60, 120, 300, 600]  # seconds
+  tau_eta_default: 120
+  eta_0: 0.5  # baseline material state
+  
+  # Gating
+  eta_thresh_values: [0.3, 0.5, 0.7]
+  eta_thresh_default: 0.5
+  k_gate: 10.0  # steepness of sigmoid
+  
+  # Activity/reward
+  phosphorylation_rate: 0.1
+  dopamine_amplitude: 1.0
+  
+  # Simulation
+  t_max: 1000  # seconds
+  dt: 0.01  # seconds
+  
+  # Gate criteria
+  gate:
+    bifurcation_required: true
+    dynamics_difference_threshold: 0.1  # normalized difference
+
+# Phase 2: Spiking Network Parameters
+spiking_network:
+  # Network size
+  n_input: 100
+  n_output: 10
+  connection_prob: 0.3
+  
+  # Izhikevich neuron parameters
+  neuron:
+    a: 0.02
+    b: 0.2
+    c: -65
+    d: 8
+  
+  # Synapse parameters
+  synapse:
+    w_init: 0.5
+    w_max: 1.0
+    A_plus: 0.1
+    A_minus: 0.12
+    tau_E: 1.0  # seconds
+    tau_eta: 120.0  # seconds
+    eta_0: 0.5
+    eta_thresh: 0.5
+    k_gate: 10.0
+  
+  # Simulation
+  duration: 300  # seconds
+  dt: 0.1  # ms
+  reward_interval: 10  # seconds
+  
+  # Gate criteria
+  gate:
+    learning_curve_p_threshold: 0.05
+    history_effect_size_threshold: 0.3
+
+# Phase 3: Vesicle Pool Parameters
+vesicle_pools:
+  # Pool sizes (normalized)
+  RP_size: 42.3  # relative to RRP
+  IP_size: 2.7   # relative to RRP
+  RRP_size: 1.0  # reference
+  
+  # Rate constants (per second)
+  k_max: 0.02       # RP -> IP max rate
+  k_dock: 0.1       # IP -> RRP rate
+  k_release: 0.5    # RRP release rate
+  k_recycle: 0.001  # recycling rate
+  eta_half: 0.5     # eta value for half-max inhibition
+  
+  # Stimulation
+  stim_frequencies: [1, 5, 10, 20, 50]  # Hz
+  pulse_pairs: 10
+  interpulse_intervals: [10, 20, 50, 100, 200]  # ms
+  
+  # Gate criteria
+  gate:
+    ppr_correlation_p_threshold: 0.05
+    pr_modulation_min_range: 0.1
+
+# Phase 4: Figure Generation
+figures:
+  style: "publication"
+  dpi: 300
+  format: "pdf"
+  figsize: [8, 6]
+  font_size: 12
+  
+  required_figures:
+    - name: "fig1_ode_dynamics"
+      panels: ["phase_portrait", "timeseries", "bifurcation"]
+    - name: "fig2_spiking_comparison"
+      panels: ["raster_3factor", "raster_4factor", "learning_curves"]
+    - name: "fig3_history_dependence"
+      panels: ["same_input_diff_outcome", "eta_trajectory"]
+    - name: "fig4_vesicle_pools"
+      panels: ["ppr_vs_eta", "stp_facilitation", "stp_depression"]
+    - name: "fig5_summary"
+      panels: ["schematic", "key_results", "predictions"]
+
+# Phase 5: Manuscript Integration
+manuscript:
+  sections_to_add:
+    - title: "Computational Modeling"
+      after: "Modeling Implications"
+    - title: "Modeling Results"
+      after: "Computational Modeling"
+  
+  figures_to_insert:
+    - ref: "fig:ode_dynamics"
+      caption_prefix: "Mean-field ODE model of material eligibility."
+    - ref: "fig:spiking_comparison"
+      caption_prefix: "Comparison of three-factor and four-factor learning."
+    - ref: "fig:history_dependence"
+      caption_prefix: "History-dependent plasticity outcomes."
+    - ref: "fig:vesicle_pools"
+      caption_prefix: "Vesicle pool dynamics with condensate coupling."
+    - ref: "fig:summary"
+      caption_prefix: "Summary of computational predictions."
+
+# Execution settings
+execution:
+  max_retries_per_phase: 5
+  checkpoint_on_success: true
+  git_commit_on_freeze: true
+  verbose: true

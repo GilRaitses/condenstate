@@ -13,11 +13,12 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
 
 1. `.sst/index.md`
 2. `.sst/layout_policy.md`
-3. `.sst/claims_matrix.json`
-4. `.sst/evidence_index.json`
-5. `.sst/paper1/objective_spec.json`
-6. `.sst/paper1/sweep_manifest.json`
-7. `.sst/paper2/objective_spec.json`
+3. `.sst/credentials_policy.md`
+4. `.sst/claims_matrix.json`
+5. `.sst/evidence_index.json`
+6. `.sst/paper1/objective_spec.json`
+7. `.sst/paper1/sweep_manifest.json`
+8. `.sst/paper2/objective_spec.json`
 
 ## Canon layout
 
@@ -27,6 +28,7 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
   next_agent_boot.md
   resume_protocol.md
   layout_policy.md
+  credentials_policy.md
   claims_matrix.json
   evidence_index.json
   paper1/

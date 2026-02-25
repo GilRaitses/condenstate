@@ -1,0 +1,14 @@
+---
+description: Env and orchestration when agent runs in condenstate with PHY600 + AWS access
+alwaysApply: true
+---
+
+# condenstate orchestration
+
+- This repo is the **public mirror**: canon (.sst, .ddb), paper1/paper2 specs; no live IPs or secrets.
+- When the agent runs on the **same machine as PHY600** and has **AWS/SSH access**, use the **same env as PHY600**:
+  - SSH key: `~/.ssh/pax-ec2-key.pem` (or `SSH_KEY_PATH` from `.env`).
+  - Magniphyq IP: from env `MAGNIPHYQ_IP` or from `aws ec2 describe-instances --region us-east-1 --filters "Name=tag:Name,Values=magniphyq" --query 'Reservations[*].Instances[*].PublicIpAddress' --output text`.
+  - PHY600 path: env `PHY600_ROOT` or `~/PHY600` (pipeline, registry, data live there).
+- Full details: `.meta/docs/ENV_AND_ORCHESTRATION.md`.
+- Do not commit `.env`; use `.env.example` as template.

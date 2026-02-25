@@ -21,11 +21,16 @@ Both paper targets are referenced from `.sst/run_manifest.json` under `paper_tar
 
 1. `.sst/index.md`
 2. `.sst/layout_policy.md`
-3. `.sst/claims_matrix.json`
-4. `.sst/evidence_index.json`
-5. `.sst/paper1/objective_spec.json`
-6. `.sst/paper1/sweep_manifest.json`
-7. `.sst/paper2/objective_spec.json`
+3. `.sst/credentials_policy.md`
+4. `.sst/claims_matrix.json`
+5. `.sst/evidence_index.json`
+6. `.sst/paper1/objective_spec.json`
+7. `.sst/paper1/sweep_manifest.json`
+8. `.sst/paper2/objective_spec.json`
+
+## Credentials (agent rehydration)
+
+Every agent must be aware of the credentials policy on boot and rehydration. Read `.sst/credentials_policy.md`. Secrets are never in the repo; they are set in `.env` (local) or Cursor environment/secrets (cloud). Required: `PHY600_ROOT`, `SSH_KEY_PATH` (or default), optionally `MAGNIPHYQ_IP`. See `.meta/docs/SECRETS_FOR_CLOUD_AGENTS.md` for cloud setup.
 
 ## Write discipline
 
@@ -57,3 +62,23 @@ python3 .ddb/tools/register_sst.py
 ```
 
 Resume is blocked if lifecycle mismatch, orphan snapshots, reconstruction failure, or explicit refusal gates are present.
+
+## Eval directives (completeness report)
+
+To test all gates and contracts and get a single completeness report:
+
+```bash
+make eval
+# or
+python3 .sst/tools/eval_gates.py
+```
+
+- **Exit 0:** all pass (register_sst, lifecycle_guard allowed, canon layout complete).
+- **Exit 1:** register_sst failed.
+- **Exit 2:** lifecycle_guard disallowed (one or more resume gates failed).
+- **Exit 3:** canon layout incomplete (missing required .sst/.ddb files).
+
+Options:
+
+- `--report` — also write `.meta/reports/completeness_<timestamp>.md`.
+- `--json` — print machine-readable JSON only (for CI).

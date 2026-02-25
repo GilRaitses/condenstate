@@ -1,0 +1,7 @@
+# Local env (copy from .env.example; do not commit)
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
