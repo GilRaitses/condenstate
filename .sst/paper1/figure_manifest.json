@@ -1,0 +1,43 @@
+{
+  "artifact_kind": "paper1_figure_manifest",
+  "decision_scope": {
+    "od_pair": "paper1",
+    "graph_id": "paper1-canon-v0",
+    "run_id": "paper1-figures-000",
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "lifecycle_id": "synapsin_p1_2026_02_24",
+  "decision_identity": {
+    "kind": "paper1_figure_manifest",
+    "scope": {
+      "paper": "paper1",
+      "version": "v0"
+    },
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "figures": [
+    {
+      "figure_id": "P1_F01",
+      "status": "pending",
+      "source_sweep_ids": [
+        "p1_sweep_000"
+      ],
+      "evidence_refs": [],
+      "output_paths": [
+        ".meta/figs/paper1/P1_F01.png"
+      ]
+    }
+  ]
+}

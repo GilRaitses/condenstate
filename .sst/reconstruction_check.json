@@ -1,0 +1,49 @@
+{
+  "artifact_kind": "reconstruction_check",
+  "decision_scope": {
+    "od_pair": "project:condenstate",
+    "graph_id": "condenstate-canon-v1",
+    "run_id": "condenstate-reconstruction-0001",
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "lifecycle_id": "mirror-local-20260211-0001",
+  "reconstructable": true,
+  "minimum_dimensions": {
+    "requires_reconstruction_tests_array": true,
+    "requires_test_name_and_result_keys": true,
+    "requires_summary_pass_failure_status": true
+  },
+  "reconstruction_tests": [
+    {
+      "name": "replay_trace_chunk_0001",
+      "result": "pass"
+    },
+    {
+      "name": "rebuild_frontier_series_from_trace",
+      "result": "pass"
+    },
+    {
+      "name": "route_flip_replay",
+      "result": "pass"
+    },
+    {
+      "name": "paper1_canon_present",
+      "result": "pass"
+    },
+    {
+      "name": "paper2_canon_present",
+      "result": "pass"
+    }
+  ],
+  "summary": {
+    "failure_count": 0,
+    "pass_count": 5,
+    "status": "pass"
+  }
+}

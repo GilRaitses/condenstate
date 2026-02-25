@@ -1,0 +1,91 @@
+{
+  "artifact_kind": "run_manifest",
+  "decision_scope": {
+    "od_pair": "project:condenstate",
+    "graph_id": "condenstate-canon-v1",
+    "run_id": "condenstate-manifest-0001",
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "lifecycle_id": "mirror-local-20260211-0001",
+  "generated_at": "2026-02-24T00:00:00Z",
+  "objective_ref": "objective:condenstate_dual_paper_program",
+  "decision_identity": {
+    "kind": "condenstate_run_manifest",
+    "scope": {
+      "project": "condenstate",
+      "version": "v1"
+    },
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "paper_targets": {
+    "paper1": {
+      "title": "synapsin phase diagram work",
+      "objective_path": ".sst/paper1/objective_spec.json",
+      "sweep_manifest_path": ".sst/paper1/sweep_manifest.json",
+      "figure_manifest_path": ".sst/paper1/figure_manifest.json",
+      "meta_runs_root": ".meta/runs/paper1",
+      "meta_figs_root": ".meta/figs/paper1"
+    },
+    "paper2": {
+      "title": "learning bridge work",
+      "objective_path": ".sst/paper2/objective_spec.json",
+      "model_spec_path": ".sst/paper2/model_spec.json",
+      "sweep_manifest_path": ".sst/paper2/sweep_manifest.json",
+      "figure_manifest_path": ".sst/paper2/figure_manifest.json",
+      "meta_runs_root": ".meta/runs/paper2",
+      "meta_figs_root": ".meta/figs/paper2"
+    }
+  },
+  "active_run_ids": [
+    "p1_sweep_000",
+    "p2_sweep_000"
+  ],
+  "runs": [
+    {
+      "run_id": "p1_sweep_000",
+      "paper": "paper1",
+      "status": "pending",
+      "current_stage": "objective_locked",
+      "task_type": "phase_diagram_sweep",
+      "task_variant": "grid_bootstrap",
+      "graph_id": "paper1-canon-v0",
+      "od_pair": "paper1",
+      "lifecycle_id": "mirror-local-20260211-0001",
+      "trace_chunk_ids": [],
+      "artifact_refs": [
+        ".sst/paper1/objective_spec.json",
+        ".sst/paper1/sweep_manifest.json",
+        ".sst/paper1/phase_boundaries.json"
+      ]
+    },
+    {
+      "run_id": "p2_sweep_000",
+      "paper": "paper2",
+      "status": "pending",
+      "current_stage": "objective_locked",
+      "task_type": "learning_bridge_sweep",
+      "task_variant": "slow_state_gate",
+      "graph_id": "paper2-canon-v0",
+      "od_pair": "paper2",
+      "lifecycle_id": "mirror-local-20260211-0001",
+      "trace_chunk_ids": [],
+      "artifact_refs": [
+        ".sst/paper2/objective_spec.json",
+        ".sst/paper2/model_spec.json",
+        ".sst/paper2/sweep_manifest.json"
+      ]
+    }
+  ]
+}

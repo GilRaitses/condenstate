@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "known_artifacts": [],
+  "exclude_globs": [
+    ".sst/tools/**"
+  ]
+}

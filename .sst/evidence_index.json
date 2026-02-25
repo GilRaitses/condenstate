@@ -1,0 +1,30 @@
+{
+  "artifact_kind": "evidence_index",
+  "decision_scope": {
+    "od_pair": "project:condenstate",
+    "graph_id": "condenstate-canon-v1",
+    "run_id": "condenstate-evidence-0001",
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "lifecycle_id": "mirror-local-20260211-0001",
+  "decision_identity": {
+    "kind": "evidence_index",
+    "scope": {
+      "project": "synapsin"
+    },
+    "lifecycle_id": "synapsin_global_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "evidence": []
+}

@@ -1,0 +1,19 @@
+{
+  "artifact_kind": "system_state_snapshot",
+  "decision_scope": {
+    "od_pair": "project:condenstate",
+    "graph_id": "condenstate-canon-v1",
+    "run_id": "condenstate-manifest-0001",
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "lifecycle_id": "mirror-local-20260211-0001",
+  "captured_at": "2026-02-24T00:00:00Z",
+  "last_run_nonce": "condenstate-bootstrap-0001",
+  "last_canonical_output_root": ".meta/runs"
+}

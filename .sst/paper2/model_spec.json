@@ -1,0 +1,49 @@
+{
+  "artifact_kind": "learning_bridge_model_spec",
+  "decision_scope": {
+    "od_pair": "paper2",
+    "graph_id": "paper2-canon-v0",
+    "run_id": "paper2-model-000",
+    "lifecycle_id": "synapsin_p2_2026_02_24"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "graph_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "params_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "lifecycle_id": "synapsin_p2_2026_02_24",
+  "decision_identity": {
+    "kind": "learning_bridge_model_spec",
+    "scope": {
+      "paper": "paper2",
+      "version": "v0"
+    },
+    "lifecycle_id": "synapsin_p2_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "graph_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "params_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "models": [
+    {
+      "model_id": "p2_ode_000",
+      "type": "ode",
+      "state_vars": [
+        "x_fast",
+        "y_slow",
+        "w_outcome"
+      ],
+      "gating_term": "UNSET",
+      "fit_targets": [
+        {
+          "name": "timescale_ratio",
+          "value": "UNSET",
+          "evidence_refs": []
+        }
+      ]
+    }
+  ]
+}

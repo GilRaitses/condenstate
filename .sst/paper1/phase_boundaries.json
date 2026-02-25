@@ -1,0 +1,40 @@
+{
+  "artifact_kind": "synapsin_phase_boundaries",
+  "decision_scope": {
+    "od_pair": "paper1",
+    "graph_id": "paper1-canon-v0",
+    "run_id": "paper1-boundaries-000",
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "lifecycle_id": "synapsin_p1_2026_02_24",
+  "decision_identity": {
+    "kind": "synapsin_phase_boundaries",
+    "scope": {
+      "paper": "paper1",
+      "version": "v0"
+    },
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "boundaries": [
+    {
+      "boundary_id": "p1_boundary_000",
+      "estimated_eta_c": "UNSET",
+      "uncertainty": "UNSET",
+      "method": "UNSET",
+      "sweep_id": "p1_sweep_000",
+      "evidence_refs": []
+    }
+  ]
+}

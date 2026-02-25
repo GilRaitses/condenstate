@@ -1,0 +1,55 @@
+{
+  "artifact_kind": "claims_matrix",
+  "decision_scope": {
+    "od_pair": "project:condenstate",
+    "graph_id": "condenstate-canon-v1",
+    "run_id": "condenstate-claims-0001",
+    "lifecycle_id": "mirror-local-20260211-0001"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "params_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "lifecycle_id": "mirror-local-20260211-0001",
+  "decision_identity": {
+    "kind": "claims_matrix",
+    "scope": {
+      "project": "synapsin"
+    },
+    "lifecycle_id": "synapsin_global_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "invariants": {
+    "supported_requires_evidence": true,
+    "status_transitions_are_monotone": true
+  },
+  "claims": [
+    {
+      "claim_id": "P1_C01",
+      "paper": "paper1",
+      "statement": "A phase boundary estimate is recorded with an evidence slice that binds it to a sweep output.",
+      "status": "pending",
+      "evidence_refs": [],
+      "artifact_refs": [
+        ".sst/paper1/phase_boundaries.json"
+      ]
+    },
+    {
+      "claim_id": "P2_C01",
+      "paper": "paper2",
+      "statement": "A slow state variable in the reduced model can gate outcome updates under matched fast input statistics.",
+      "status": "pending",
+      "evidence_refs": [],
+      "artifact_refs": [
+        ".sst/paper2/model_spec.json"
+      ]
+    }
+  ]
+}

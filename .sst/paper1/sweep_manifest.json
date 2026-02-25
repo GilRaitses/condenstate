@@ -1,0 +1,41 @@
+{
+  "artifact_kind": "synapsin_phase_sweep_manifest",
+  "decision_scope": {
+    "od_pair": "paper1",
+    "graph_id": "paper1-canon-v0",
+    "run_id": "p1_sweep_000",
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "lifecycle_id": "synapsin_p1_2026_02_24",
+  "decision_identity": {
+    "kind": "synapsin_phase_sweep_manifest",
+    "scope": {
+      "paper": "paper1",
+      "version": "v0"
+    },
+    "lifecycle_id": "synapsin_p1_2026_02_24"
+  },
+  "decisiondb_identity_fields": {
+    "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526",
+    "objective_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "sweeps": [
+    {
+      "sweep_id": "p1_sweep_000",
+      "status": "pending",
+      "parameter_grid_ref": ".sst/paper1/objective_spec.json",
+      "run_outputs": {
+        "raw_dir": ".meta/runs/paper1/p1_sweep_000/",
+        "summary_json": ".meta/runs/paper1/p1_sweep_000/summary.json"
+      }
+    }
+  ]
+}
