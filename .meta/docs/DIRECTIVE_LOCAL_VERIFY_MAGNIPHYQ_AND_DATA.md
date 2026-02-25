@@ -29,7 +29,15 @@ Follow `.meta/docs/DIRECTIVE_LOCAL_READINESS_CHECK.md`: check data/scripts in re
   - **Full data dir:** `~/results` exists and contains sim directories (e.g. `sim_*`). Check total size is approximately 4GB (e.g. `du -sh ~/results`); report size in the block. If `~/results` is missing or much smaller than ~4GB, report `data_dir_ok: no` and `data_dir_note: "full sim data not present; sync required"`.
 - If you cannot SSH (no key, no IP, or connection failed), set in the block: `magniphyq_reachable: no`, `condenstate_on_magniphyq: not_checked`, `data_dir_ok: not_checked`, and in `gaps` add "magniphyq not reachable; cloud agent must verify".
 
-**4. Output only this block**
+**4. Push so cloud and magniphyq can use the latest**
+
+If there are uncommitted changes in the repo, commit and push to the condenstate remote (e.g. `origin main`) so that:
+- The cloud agent (when it clones or pulls condenstate) gets the latest directives and docs.
+- On magniphyq, a later `git pull` in `~/condenstate` gets the same.
+
+Do not commit `.env` or any secrets. After pushing, you can update the clone on magniphyq: `ssh ubuntu@$MAGNIPHYQ_IP "cd ~/condenstate && git pull origin main"` (optional, so cloud agents see latest when they SSH there).
+
+**5. Output only this block**
 
 Fill in; do not put secrets (no IP, no key) in the block.
 
@@ -58,6 +66,7 @@ at: [ISO UTC]
 
 Use `ready: yes` only when eval is pass, env and key are in place, magniphyq is reachable, condenstate exists on magniphyq, and data dir is present and ~4GB. Otherwise `ready: no` and set `gaps` accordingly.
 
+**Cursor env for the cloud agent:** The local agent cannot set the cloud agent’s environment. You must configure the **cloud** Cursor environment (Settings → environment/secrets for that cloud project): set `MAGNIPHYQ_IP` and `SSH_KEY_PATH`, and ensure the SSH private key file exists on the cloud VM at `SSH_KEY_PATH`. See `.meta/docs/SECRETS_FOR_CLOUD_AGENTS.md` and the “Cloud agent SSH failed” section there.
 ---
 
 ## Ensuring full data dir on magniphyq (~4GB)

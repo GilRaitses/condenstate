@@ -43,3 +43,41 @@ test -f "$SSH_KEY_PATH" && echo "SSH key file exists" || echo "SSH key file miss
 ```
 
 If vars are empty or the key is missing, fix them in Cursor’s environment/secrets or via the key setup options above.
+
+---
+
+## Cloud agent SSH failed (magniphyq_reachable: no)
+
+When the cloud agent reports `magniphyq_reachable: no` or `gaps: SSH failed`, work through this checklist. The cloud VM must have the same SSH access to magniphyq as your laptop.
+
+### 1. Cursor cloud environment
+
+- In Cursor, open settings for the **cloud** environment / project where the condenstate cloud agent runs.
+- Set **environment variables** (or “Secrets”):
+  - `MAGNIPHYQ_IP` = magniphyq’s current public IP (from AWS CLI or your laptop’s `.env`).
+  - `SSH_KEY_PATH` = path **on the cloud VM** where the private key file will live (e.g. `/home/ubuntu/.ssh/pax-ec2-key.pem`).
+- Save. Some Cursor setups require a restart of the cloud session for env vars to appear; if the agent still doesn’t see them, check Cursor docs.
+
+### 2. SSH key on the cloud VM
+
+The key file must exist **on the cloud VM** at the path you set as `SSH_KEY_PATH`. The cloud agent cannot use a key that only exists on your laptop.
+
+- **Option A – Cursor file/secret:** If Cursor allows attaching a file (e.g. “Secret files”) to the cloud environment, upload the same key you use on the laptop and set `SSH_KEY_PATH` to the path where Cursor mounts it.
+- **Option B – One-time copy:** From your laptop, copy the key to the cloud VM once (e.g. `scp -i <cloud-vm-key> ~/.ssh/pax-ec2-key.pem ubuntu@<cloud-vm-ip>:~/.ssh/pax-ec2-key.pem`), then SSH to the cloud VM and run `chmod 600 ~/.ssh/pax-ec2-key.pem`. Set `SSH_KEY_PATH` in Cursor to that path.
+- **Option C – Vault:** Store the key in a vault; add a small bootstrap step that the cloud agent (or you) runs once to fetch it and write it to `SSH_KEY_PATH` with mode 600.
+
+### 3. Network: magniphyq security group
+
+Magniphyq’s EC2 security group must allow **inbound SSH (22)** from the cloud agent’s outbound IP. If the cloud agent runs in Cursor’s infrastructure, that IP may be dynamic; for testing you can temporarily allow `0.0.0.0/0` on port 22, then restrict later if needed. In AWS: EC2 → Security Groups → magniphyq’s group → Inbound rules → SSH from the cloud agent’s IP or 0.0.0.0/0.
+
+### 4. Pre-flight in the cloud agent terminal
+
+Before running the cloud readiness directive, in the cloud agent’s terminal run:
+
+```bash
+echo "MAGNIPHYQ_IP=${MAGNIPHYQ_IP:-<unset>}"
+echo "SSH_KEY_PATH=${SSH_KEY_PATH:-<unset>}"
+test -f "${SSH_KEY_PATH}" && echo "SSH key file: exists" || echo "SSH key file: missing"
+```
+
+Fix any unset or missing item using steps 1–2, then re-run the cloud agent eval directive.
