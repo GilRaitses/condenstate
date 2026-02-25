@@ -8,7 +8,7 @@ When using **OpenAI Codex** with the condenstate repo (e.g. cloud agents that SS
 
 | Variable | Required | Purpose | Example |
 |----------|----------|---------|---------|
-| **MAGNIPHYQ_IP** | For SSH workflows | Magniphyq EC2 public IP | `3.81.174.42` (or resolve via AWS CLI) |
+| **MAGNIPHYQ_IP** | For SSH workflows | Magniphyq EC2 public IP. **No leading or trailing spaces** (trim in Codex env or scripts will fail). | `3.81.174.42` (or resolve via AWS CLI) |
 | **SSH_KEY_PATH** | For SSH workflows | Path to EC2 private key (PEM) **on the machine where Codex runs** | `~/.ssh/pax-ec2-key.pem` or `/path/on/codex/vm/pax-ec2-key.pem` |
 | **PHY600_ROOT** | Optional | Path to PHY600 repo on that machine | `~/PHY600` or leave unset |
 
