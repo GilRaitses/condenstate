@@ -11,11 +11,12 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
 
 1. `.sst/index.md`
 2. `.sst/layout_policy.md`
-3. `.sst/claims_matrix.json`
-4. `.sst/evidence_index.json`
-5. `.sst/paper1/objective_spec.json`
-6. `.sst/paper1/sweep_manifest.json`
-7. `.sst/paper2/objective_spec.json`
+3. `.sst/credentials_policy.md`
+4. `.sst/claims_matrix.json`
+5. `.sst/evidence_index.json`
+6. `.sst/paper1/objective_spec.json`
+7. `.sst/paper1/sweep_manifest.json`
+8. `.sst/paper2/objective_spec.json`
 
 ## Write locations
 
@@ -24,6 +25,10 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
 3. After any `.sst` write:
    - run `python3 .ddb/tools/register_sst.py`
    - commit the updated `.sst/.ddb` surfaces
+
+## Credentials awareness
+
+Every agent (local or cloud) must be aware of the credentials policy on boot and rehydration. Read `.sst/credentials_policy.md`. Secrets are never in the repo; they are set in `.env` (local) or Cursor's environment/secrets (cloud). Required: `PHY600_ROOT`, `SSH_KEY_PATH` (or default), and optionally `MAGNIPHYQ_IP`. Before running SSH or pipeline steps that need PHY600 or magniphyq, verify env and key path; if missing, report the gap and do not proceed. See `.meta/docs/SECRETS_FOR_CLOUD_AGENTS.md`.
 
 ## Refusal gates
 

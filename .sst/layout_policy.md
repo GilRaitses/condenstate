@@ -17,6 +17,7 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
 
 ```text
 .sst/
+  credentials_policy.md
   claims_matrix.json
   evidence_index.json
   paper1/

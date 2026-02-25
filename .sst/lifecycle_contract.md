@@ -28,6 +28,7 @@ DECISION_IDENTITY_FIELDS_JSON: {"repo_commit":"39f57f49eeae6e87490a9cd4a1e0c2036
     "managed_resources": [
       ".sst/system/CURRENT",
       ".sst/system/state_snapshot_20260211T000000Z.json",
+      ".sst/credentials_policy.md",
       ".sst/paper1/objective_spec.json",
       ".sst/paper2/objective_spec.json"
     ],
