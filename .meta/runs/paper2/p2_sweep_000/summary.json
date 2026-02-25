@@ -1,0 +1,11 @@
+{
+  "metrics": {
+    "dynamics_difference": 0.285937,
+    "final_weight_gated": 1.082251,
+    "final_weight_nogated": 1.515625
+  },
+  "model_id": "p2_ode_000",
+  "results_path": ".meta/runs/paper2/p2_sweep_000/results.json",
+  "run_id": "p2_sweep_000",
+  "status": "pass"
+}
