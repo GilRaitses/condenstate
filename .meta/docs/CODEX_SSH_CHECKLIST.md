@@ -61,3 +61,5 @@ If the key file exists and has correct permissions but SSH fails with **Network 
 **If key_file=exists and SSH returns ok:** Proceed with cloud readiness.
 
 **If key_file=exists and SSH returns Network unreachable (or timeout):** Tell the user: "Key is present but Codex cannot reach magniphyq (outbound SSH blocked). Use your laptop/Cursor for magniphyq access. See `.meta/docs/CODEX_SSH_CHECKLIST.md` section 3."
+
+**Do not** say "fix this in Cursor Cloud" — this environment is **Codex**, not Cursor. The checklist above is the fix; no other product is required.
