@@ -1,5 +1,7 @@
 # Heads-up for external orchestrator
 
+**Full recap for ChatGPT (or other) orchestrator:** `.meta/docs/ORCHESTRATOR_RECAP.md` — cloud agent setup, paste directives, canon, March preprint push.
+
 ## Agent status in condenstate
 
 The agent is **live in condenstate** and has been **cleared for**:

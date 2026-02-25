@@ -1,5 +1,9 @@
 # Secrets for cloud agents
 
+**Step-by-step setup when the cloud agent fails:** see **`.meta/docs/CLOUD_AGENT_SETUP_GUIDE.md`**.
+
+**Rotate the SSH key** (e.g. after it was pasted in chat): see **`.meta/docs/KEY_ROTATION.md`**. Do not paste the new key in chat; use file copy or Cursor’s secret-file attachment.
+
 **Do not put secret values in the repo.** The repo only documents *which* secrets and env vars are needed and *where* to configure them.
 
 ## Where cloud agents get secrets
