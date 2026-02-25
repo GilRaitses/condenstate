@@ -1,5 +1,9 @@
 {
   "artifact_kind": "run_manifest",
+  "active_targets": [
+    "paper1",
+    "paper2"
+  ],
   "decision_scope": {
     "od_pair": "project:condenstate",
     "graph_id": "condenstate-canon-v1",
@@ -51,6 +55,18 @@
   "active_run_ids": [
     "p1_sweep_000",
     "p2_sweep_000"
+  ],
+  "jobs": [
+    {
+      "job_id": "paper1_canon_bootstrap",
+      "paper": "paper1",
+      "status": "pending"
+    },
+    {
+      "job_id": "paper2_canon_bootstrap",
+      "paper": "paper2",
+      "status": "pending"
+    }
   ],
   "runs": [
     {
