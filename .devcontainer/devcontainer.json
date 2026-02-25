@@ -1,0 +1,23 @@
+{
+  "name": "condenstate",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/python:1": {}
+  },
+  "containerEnv": {
+    "MAGNIPHYQ_IP": "${localEnv:MAGNIPHYQ_IP}",
+    "SSH_KEY_PATH": "${localEnv:SSH_KEY_PATH:-/home/vscode/.ssh/pax-ec2-key.pem}",
+    "PHY600_ROOT": "${localEnv:PHY600_ROOT}"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,readonly"
+  ],
+  "postCreateCommand": "true",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  }
+}
