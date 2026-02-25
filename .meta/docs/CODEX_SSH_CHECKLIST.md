@@ -6,10 +6,16 @@
 
 ## 1. What the agent should run (status only)
 
-Run this and interpret the result:
+**If MAGNIPHYQ_IP has trailing (or leading) whitespace,** the user must edit the env in Codex and trim it to the IP only (e.g. `3.81.174.42`). Otherwise `nc`/`ssh` will fail.
+
+Run this (uses trimmed IP) and interpret the result:
 
 ```bash
-echo "MAGNIPHYQ_IP=$([ -n "$MAGNIPHYQ_IP" ] && echo set || echo unset)"; echo "SSH_KEY_PATH=$([ -n "$SSH_KEY_PATH" ] && echo set || echo unset)"; test -f "${SSH_KEY_PATH:-/none}" && echo "key_file=exists" || echo "key_file=missing"; timeout 10 ssh -o BatchMode=yes -o ConnectTimeout=5 -i "${SSH_KEY_PATH:-/dev/null}" ubuntu@${MAGNIPHYQ_IP:-invalid} "echo ok" 2>&1 | tail -1
+ip_trimmed="$(printf '%s' "${MAGNIPHYQ_IP:-}" | xargs)"
+echo "MAGNIPHYQ_IP=$([ -n "$ip_trimmed" ] && echo set || echo unset)"
+echo "SSH_KEY_PATH=$([ -n "$SSH_KEY_PATH" ] && echo set || echo unset)"
+test -f "${SSH_KEY_PATH:-/none}" && echo "key_file=exists" || echo "key_file=missing"
+timeout 10 ssh -o BatchMode=yes -o ConnectTimeout=5 -i "${SSH_KEY_PATH:-/dev/null}" "ubuntu@${ip_trimmed:-invalid}" "echo ok" 2>&1 | tail -1
 ```
 
 **Interpretation:**
@@ -63,3 +69,57 @@ If the key file exists and has correct permissions but SSH fails with **Network 
 **If key_file=exists and SSH returns Network unreachable (or timeout):** Tell the user: "Key is present but Codex cannot reach magniphyq (outbound SSH blocked). Use your laptop/Cursor for magniphyq access. See `.meta/docs/CODEX_SSH_CHECKLIST.md` section 3."
 
 **Do not** say "fix this in Cursor Cloud" — this environment is **Codex**, not Cursor. The checklist above is the fix; no other product is required.
+
+---
+
+## 5. Readiness check (pass/fail, what to fix)
+
+The agent may run this and report only the outcome (no secret values). It trims `MAGNIPHYQ_IP` and reports what’s wrong.
+
+```bash
+set -e
+ip_trimmed="$(printf '%s' "${MAGNIPHYQ_IP:-}" | xargs)"
+fixes=""
+[ -z "$ip_trimmed" ] && fixes="${fixes} MAGNIPHYQ_IP unset or empty"
+[ "$ip_trimmed" != "${MAGNIPHYQ_IP:-}" ] && fixes="${fixes} MAGNIPHYQ_IP had whitespace (use trimmed value in env)"
+[ -z "${SSH_KEY_PATH:-}" ] && fixes="${fixes} SSH_KEY_PATH unset"
+[ -n "${SSH_KEY_PATH:-}" ] && [ ! -f "$SSH_KEY_PATH" ] && fixes="${fixes} key file missing at SSH_KEY_PATH"
+if [ -n "$ip_trimmed" ] && [ -f "${SSH_KEY_PATH:-/none}" ]; then
+  if ! timeout 8 ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -i "$SSH_KEY_PATH" "ubuntu@$ip_trimmed" "echo ok" 2>/dev/null; then
+    fixes="${fixes} network unreachable or SSH failed from this environment"
+  fi
+fi
+[ -z "$fixes" ] && echo "READINESS=pass" || echo "READINESS=fail FIXES:$fixes"
+```
+
+---
+
+## 6. Run in your terminal (laptop) before Codex
+
+Run this **on your laptop** (in the condenstate repo or any directory) to see if your env and SSH to magniphyq are good before you open Codex. Uses `.env` if you’re in the repo.
+
+```bash
+cd /path/to/condenstate   # or skip if you set vars another way
+[ -f .env ] && set -a && source .env && set +a
+export MAGNIPHYQ_IP="${MAGNIPHYQ_IP:-}"
+export SSH_KEY_PATH="${SSH_KEY_PATH:-$HOME/.ssh/pax-ec2-key.pem}"
+
+ip_trimmed="$(printf '%s' "${MAGNIPHYQ_IP:-}" | xargs)"
+fixes=""
+[ -z "$ip_trimmed" ] && fixes="${fixes} MAGNIPHYQ_IP unset or empty"
+[ "$ip_trimmed" != "${MAGNIPHYQ_IP:-}" ] && fixes="${fixes} MAGNIPHYQ_IP had whitespace"
+[ -z "${SSH_KEY_PATH:-}" ] && fixes="${fixes} SSH_KEY_PATH unset"
+[ -n "${SSH_KEY_PATH:-}" ] && [ ! -f "$SSH_KEY_PATH" ] && fixes="${fixes} key file missing"
+if [ -n "$ip_trimmed" ] && [ -f "${SSH_KEY_PATH:-/none}" ]; then
+  if ! timeout 8 ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -i "$SSH_KEY_PATH" "ubuntu@$ip_trimmed" "echo ok" 2>/dev/null; then
+    fixes="${fixes} network unreachable or SSH failed"
+  fi
+fi
+[ -z "$fixes" ] && echo "READINESS=pass" || echo "READINESS=fail FIXES:$fixes"
+```
+
+One-liner (from condenstate repo root, with `.env`):
+
+```bash
+cd /Users/gilraitses/condenstate && [ -f .env ] && set -a && source .env && set +a; export SSH_KEY_PATH="${SSH_KEY_PATH:-$HOME/.ssh/pax-ec2-key.pem}"; ip_trimmed="$(printf '%s' "${MAGNIPHYQ_IP:-}" | xargs)"; fixes=""; [ -z "$ip_trimmed" ] && fixes="${fixes} MAGNIPHYQ_IP unset"; [ -n "${SSH_KEY_PATH:-}" ] && [ ! -f "$SSH_KEY_PATH" ] && fixes="${fixes} key missing"; [ -n "$ip_trimmed" ] && [ -f "${SSH_KEY_PATH:-/none}" ] && ! timeout 8 ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -i "$SSH_KEY_PATH" "ubuntu@$ip_trimmed" "echo ok" 2>/dev/null && fixes="${fixes} SSH failed"; [ -z "$fixes" ] && echo "READINESS=pass" || echo "READINESS=fail FIXES:$fixes"
+```
