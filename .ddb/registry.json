@@ -60,7 +60,7 @@
         "od_pair": "project:condenstate",
         "run_id": "condenstate-manifest-0001"
       },
-      "status": "active",
+      "status": "superseded",
       "supersedes": [
         "3a6a341c58bba97f95b2eec1592824525a73c8ebd05b19b1964ad53a65f9dd29"
       ]
@@ -95,6 +95,40 @@
         "run_id": "condenstate-manifest-0001"
       },
       "status": "superseded"
+    },
+    {
+      "artifact_hash": "fe6ab5df79019d70c9e7bb4b074b8e51e1816b9c33823d5a6c4785d43701f329",
+      "artifact_path": ".sst/memos/ORCHESTRATION_STATUS.md",
+      "decision_id": "86fecee9917e0b3314d970ba989680c97e3f267111ccb8968f0170b24e7e0a19",
+      "equivalence_policy": {
+        "canonicalization": "LF normalize, trim trailing whitespace per line, UTF-8",
+        "compare_fields": [
+          "__full_text__"
+        ],
+        "policy_name": "canonical_lf_trim_trailing_ws_sha256"
+      },
+      "identity_fields": {
+        "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "params_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+        "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526"
+      },
+      "kind": "ORCHESTRATION_STATUS",
+      "provenance": {
+        "generator": ".ddb/tools/register_sst.py",
+        "source_artifact": ".sst/memos/ORCHESTRATION_STATUS.md",
+        "source_type": "text"
+      },
+      "scope": {
+        "graph_id": "condenstate-canon-v1",
+        "lifecycle_id": "mirror-local-20260211-0001",
+        "od_pair": "project:condenstate",
+        "run_id": "condenstate-manifest-0001"
+      },
+      "status": "active",
+      "supersedes": [
+        "282cc84828522dc952fa43be12def822d35bfec13cad642ea3b151d1226b7dd6"
+      ]
     },
     {
       "artifact_hash": "4e3626062b8c220f8a02c93a122af2142b65fb945aa2081187818ddf6a3f65c8",
