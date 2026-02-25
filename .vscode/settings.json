@@ -1,0 +1,12 @@
+{
+  "terminal.integrated.env.osx": {
+    "MAGNIPHYQ_IP": "${env:MAGNIPHYQ_IP}",
+    "SSH_KEY_PATH": "${env:SSH_KEY_PATH}",
+    "PHY600_ROOT": "${env:PHY600_ROOT}"
+  },
+  "terminal.integrated.env.linux": {
+    "MAGNIPHYQ_IP": "${env:MAGNIPHYQ_IP}",
+    "SSH_KEY_PATH": "${env:SSH_KEY_PATH}",
+    "PHY600_ROOT": "${env:PHY600_ROOT}"
+  }
+}

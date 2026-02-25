@@ -1,5 +1,7 @@
 # Secrets for cloud agents
 
+**Step-by-step setup when the cloud agent fails:** see **`.meta/docs/CLOUD_AGENT_SETUP_GUIDE.md`**.
+
 **Do not put secret values in the repo.** The repo only documents *which* secrets and env vars are needed and *where* to configure them.
 
 ## Where cloud agents get secrets
