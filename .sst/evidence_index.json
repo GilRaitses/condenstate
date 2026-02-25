@@ -26,5 +26,21 @@
     "graph_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "params_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
   },
-  "evidence": []
+  "evidence": [
+    {
+      "evidence_id": "P2_E01",
+      "paper": "paper2",
+      "model_id": "p2_ode_000",
+      "run_id": "p2_sweep_000",
+      "metric": "dynamics_difference",
+      "value": 0.285937,
+      "raw_path": ".meta/runs/paper2/p2_sweep_000/results.json",
+      "raw_file_sha256": "5854b7938ecf20385371f3a4c81b1f5f503c8432d0d27b48fa34b2637a6508a4",
+      "slice_sha256": "e1785c1752b296edd64b1be1356edeec82871263d0c54606a807dac347f7ef4d",
+      "range": {
+        "json_pointer": "/metrics/dynamics_difference"
+      },
+      "notes": "short run metric for model gate"
+    }
+  ]
 }

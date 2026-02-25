@@ -252,7 +252,41 @@
         "od_pair": "project:condenstate",
         "run_id": "condenstate-evidence-0001"
       },
-      "status": "active"
+      "status": "superseded"
+    },
+    {
+      "artifact_hash": "24e20135f4e7d96623b4217f5f87e9c4d4eba838cde619adc1231f0dca4614f6",
+      "artifact_path": ".sst/evidence_index.json",
+      "decision_id": "ca89adf10b3ad07248566ca79cb863cb3349c6b3ea8157b174093ca6fd0feb4b",
+      "equivalence_policy": {
+        "canonicalization": "JSON sort keys, compact separators, UTF-8",
+        "compare_fields": [
+          "__full_json__"
+        ],
+        "policy_name": "canonical_json_sha256"
+      },
+      "identity_fields": {
+        "graph_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "objective_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "params_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+        "repo_commit": "39f57f49eeae6e87490a9cd4a1e0c20367036526"
+      },
+      "kind": "evidence_index",
+      "provenance": {
+        "generator": ".ddb/tools/register_sst.py",
+        "source_artifact": ".sst/evidence_index.json",
+        "source_type": "json"
+      },
+      "scope": {
+        "graph_id": "condenstate-canon-v1",
+        "lifecycle_id": "mirror-local-20260211-0001",
+        "od_pair": "project:condenstate",
+        "run_id": "condenstate-evidence-0001"
+      },
+      "status": "active",
+      "supersedes": [
+        "9c67f54e0313c6758751b7f52c5974a19fa783feb1a070cc0de1cc74cdd5d73d"
+      ]
     },
     {
       "artifact_hash": "42d266c88942975a7bab79c5c88ffdfc2e6718f18dfb3ea870501d0e52adbaed",
